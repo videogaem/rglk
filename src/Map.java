@@ -1,12 +1,31 @@
 public class Map{
-    Map.Field [][] fields;
-    int sizeX;
-    int sizeY;
+    private Map.Field [][] fields;
+    private int sizeX;
+    private int sizeY;
 
     public Map(int sizeX, int sizeY){
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.fields = new Map.Field[sizeX][sizeY];
+        generateEmptyMap(this.fields);
+    }
+
+    public void generateEmptyMap(Map.Field[][] m){
+        for(int i = 0; i < sizeX; i++){
+            m[i][0] = new Field(new Structure(i, 0));
+        }
+        for(int i = 1; i < sizeY-1; i++){
+            for(int j = 0; j < sizeX; j++){
+                if(j == 0 || j == sizeX-1){
+                    m[j][i] = new Field(new Structure(j, i));
+                } else {
+                    m[j][i] = new Field();
+                }
+            }
+        }
+        for(int i = 0; i < sizeX; i++){
+            m[i][sizeY-1] = new Field(new Structure(i, sizeY-1));
+        }
     }
 
     public String toString(){

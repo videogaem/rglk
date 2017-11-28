@@ -4,10 +4,11 @@ public class Piece{
     protected int y;
     protected char symbol;
 
-    public Piece(int x, int y){
+    public Piece(int x, int y, char symbol){
         this.x = x;
         this.y = y;
         this.exists = true;
+        this.symbol = symbol;
     }
 
     public String toString(){

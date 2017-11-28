@@ -1,7 +1,8 @@
 public class Game{
 
     public static void main(String[] args){
-        Map map1 = new Map(10, 10);
+        Map map1 = new Map(30, 10);
+        System.out.println(map1);
 
     }
 
