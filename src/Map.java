@@ -28,6 +28,29 @@ public class Map{
         }
     }
 
+    public void addPiece(Piece p){
+        int x = p.getX();
+        int y = p.getY();
+        if(x < sizeX && y < sizeY && this.fields[x][y].piece == null){
+            this.fields[x][y].piece = p;
+        }
+    }
+
+    public void movePiece(Piece p, int xMove, int yMove){
+        int x = p.getX();
+        int y = p.getY();
+        int xNew = x + xMove;
+        int yNew = y + yMove;
+        if(this.fields[xNew][yNew].isEmpty()){
+            p.setX(xNew);
+            p.setY(yNew);
+            this.fields[x][y].clearField();
+            this.addPiece(p);
+
+        }
+
+    }
+
     public String toString(){
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < sizeY; i++){
@@ -57,6 +80,10 @@ public class Map{
             } else {
                 return false;
             }
+        }
+
+        public void clearField(){
+            this.piece = null;
         }
 
         public String toString(){
